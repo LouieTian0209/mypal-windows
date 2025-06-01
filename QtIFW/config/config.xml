@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Installer>
+    <Name>Mypal</Name>
+    <Version>68.14.8b</Version>
+    <Title>Mypal Installer</Title>
+    <Publisher>The Mypal Authors</Publisher>
+    <StartMenuDir>Mypal</StartMenuDir>
+    <TargetDir>@ApplicationsDirX64@/Mypal</TargetDir>
+</Installer>

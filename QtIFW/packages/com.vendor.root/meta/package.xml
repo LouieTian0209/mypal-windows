@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package>
+    <DisplayName>Mypal</DisplayName>
+    <Description>Install Mypal Browser</Description>
+    <Version>68.14.8b</Version>
+    <ReleaseDate>2025-06-02</ReleaseDate>
+    <Licenses>
+        <License name="GNU GENERAL PUBLIC LICENSE Version 3" file="LICENSE" />
+    </Licenses>
+    <Default>true</Default>
+    <Script>installscript.qs</Script>
+</Package>

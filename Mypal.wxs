@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Product Id="E3B18364-9A05-48CF-B599-A8EBB3D12768" Name="Mypal" Language="1033" Version="68.14.8" Manufacturer="The Mypal Authors" UpgradeCode="008215E5-5888-49D8-A1EB-E641E0FBEFDC">
+        <Package Description="Mypal MSI Installation Package" Comments="Mypal Installer" InstallerVersion="200" Compressed="yes" />
+        <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramMenuFolder">
+                <Directory Id="ProgramMenuDir" Name="Mypal">
+                    <Component Id="StartMenuShortcuts" Guid="735A8D0C-8ADC-4384-A816-B5E0F538BED0">
+                        <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+                        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+                        <Shortcut Id="MypalShortcut" Name="Mypal" Description="Launch Mypal Browser" Target="[INSTALLDIR]mypal.exe" WorkingDirectory="INSTALLDIR" />
+                        <Shortcut Id="UninstallProduct" Name="Uninstall Mypal" Description="Uninstalls Mypal from this computer" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
+                    </Component>
+                </Directory>
+            </Directory>
+            <Directory Id="DesktopFolder">
+                <Component Id="DesktopShortcut" Guid="F398BC7B-22DA-4806-9E6E-87B6235AA3FD">
+                    <Shortcut Id="AppDesktopShortcut" Name="Mypal" Description="Launch Mypal Browser" Target="[INSTALLDIR]mypal.exe" WorkingDirectory="INSTALLDIR" />
+                    <RemoveFolder Id="RemoveDesktopFolder" On="uninstall" />
+                    <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+                </Component>
+            </Directory>
+            <Directory Id="DATA" Name="data">
+                <Component Id="API_MS_WIN_CORE_CONSOLE_L1_1_0.DLL" DiskId="1" Guid="B8E4E8D4-856C-413C-BC58-4BD5406C2B52">
+                    <File Id="API_MS_WIN_CORE_CONSOLE_L1_1_0.DLL" Name="api-ms-win-core-console-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-console-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_DATETIME_L1_1_0.DLL" DiskId="1" Guid="29D1D6AD-D7DC-460C-BE74-B37FC5D9F5C4">
+                    <File Id="API_MS_WIN_CORE_DATETIME_L1_1_0.DLL" Name="api-ms-win-core-datetime-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-datetime-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_DEBUG_L1_1_0.DLL" DiskId="1" Guid="2E1761C6-9152-4806-939E-9B42AEF29F51">
+                    <File Id="API_MS_WIN_CORE_DEBUG_L1_1_0.DLL" Name="api-ms-win-core-debug-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-debug-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_ERRORHANDLING_L1_1_0.DLL" DiskId="1" Guid="89184C1E-900B-479F-8350-A5081E0E6265">
+                    <File Id="API_MS_WIN_CORE_ERRORHANDLING_L1_1_0.DLL" Name="api-ms-win-core-errorhandling-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-errorhandling-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_FILE_L1_1_0.DLL" DiskId="1" Guid="D62BB9E5-1BCA-4503-9142-946EE53C7EEB">
+                    <File Id="API_MS_WIN_CORE_FILE_L1_1_0.DLL" Name="api-ms-win-core-file-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-file-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_FILE_L1_2_0.DLL" DiskId="1" Guid="A818E0FE-8C54-42D0-A865-D80C62201B56">
+                    <File Id="API_MS_WIN_CORE_FILE_L1_2_0.DLL" Name="api-ms-win-core-file-l1-2-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-file-l1-2-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_FILE_L2_1_0.DLL" DiskId="1" Guid="715793B0-54F8-40E0-BC34-0F019416F417">
+                    <File Id="API_MS_WIN_CORE_FILE_L2_1_0.DLL" Name="api-ms-win-core-file-l2-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-file-l2-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_HANDLE_L1_1_0.DLL" DiskId="1" Guid="DC0B1C06-08C5-4A41-8C75-7B4631F05F58">
+                    <File Id="API_MS_WIN_CORE_HANDLE_L1_1_0.DLL" Name="api-ms-win-core-handle-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-handle-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_HEAP_L1_1_0.DLL" DiskId="1" Guid="3544A689-7322-490C-B063-1C866100816A">
+                    <File Id="API_MS_WIN_CORE_HEAP_L1_1_0.DLL" Name="api-ms-win-core-heap-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-heap-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_INTERLOCKED_L1_1_0.DLL" DiskId="1" Guid="3F41B538-DEC3-452D-903F-F7975902C4B6">
+                    <File Id="API_MS_WIN_CORE_INTERLOCKED_L1_1_0.DLL" Name="api-ms-win-core-interlocked-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-interlocked-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_LIBRARYLOADER_L1_1_0.DLL" DiskId="1" Guid="F24A3DB8-658C-4948-8B8A-DFF3BDA81F00">
+                    <File Id="API_MS_WIN_CORE_LIBRARYLOADER_L1_1_0.DLL" Name="api-ms-win-core-libraryloader-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-libraryloader-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_LOCALIZATION_L1_2_0.DLL" DiskId="1" Guid="11D19C65-FF81-4ED2-ACDD-0ECB18814073">
+                    <File Id="API_MS_WIN_CORE_LOCALIZATION_L1_2_0.DLL" Name="api-ms-win-core-localization-l1-2-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-localization-l1-2-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_MEMORY_L1_1_0.DLL" DiskId="1" Guid="9FDA65AC-07DB-441E-8A57-04CCAB89992A">
+                    <File Id="API_MS_WIN_CORE_MEMORY_L1_1_0.DLL" Name="api-ms-win-core-memory-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-memory-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_NAMEDPIPE_L1_1_0.DLL" DiskId="1" Guid="607D6C15-5BAB-4A66-946D-877E817C58C8">
+                    <File Id="API_MS_WIN_CORE_NAMEDPIPE_L1_1_0.DLL" Name="api-ms-win-core-namedpipe-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-namedpipe-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_PROCESSENVIRONMENT_L1_1_0.DLL" DiskId="1" Guid="F1ACBC35-1648-46EA-9E72-95D6BAE9E6CA">
+                    <File Id="API_MS_WIN_CORE_PROCESSENVIRONMENT_L1_1_0.DLL" Name="api-ms-win-core-processenvironment-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-processenvironment-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_PROCESSTHREADS_L1_1_0.DLL" DiskId="1" Guid="20C5A4F0-06B0-4D60-92B3-9190DA12F5FC">
+                    <File Id="API_MS_WIN_CORE_PROCESSTHREADS_L1_1_0.DLL" Name="api-ms-win-core-processthreads-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-processthreads-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_PROCESSTHREADS_L1_1_1.DLL" DiskId="1" Guid="AA90CCEF-5ADD-40F1-B0EA-8FAA48B56D23">
+                    <File Id="API_MS_WIN_CORE_PROCESSTHREADS_L1_1_1.DLL" Name="api-ms-win-core-processthreads-l1-1-1.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-processthreads-l1-1-1.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_PROFILE_L1_1_0.DLL" DiskId="1" Guid="DB275CDA-3229-4EF5-8955-DF39229CAAAD">
+                    <File Id="API_MS_WIN_CORE_PROFILE_L1_1_0.DLL" Name="api-ms-win-core-profile-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-profile-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_RTLSUPPORT_L1_1_0.DLL" DiskId="1" Guid="0CEA4F72-CB8A-46E8-942E-E29ACB6619B6">
+                    <File Id="API_MS_WIN_CORE_RTLSUPPORT_L1_1_0.DLL" Name="api-ms-win-core-rtlsupport-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-rtlsupport-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_STRING_L1_1_0.DLL" DiskId="1" Guid="6D522302-45AC-4F99-953A-9C897E941DA4">
+                    <File Id="API_MS_WIN_CORE_STRING_L1_1_0.DLL" Name="api-ms-win-core-string-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-string-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_SYNCH_L1_1_0.DLL" DiskId="1" Guid="9AABD47A-CF1F-400C-9569-CA9F609EE2DA">
+                    <File Id="API_MS_WIN_CORE_SYNCH_L1_1_0.DLL" Name="api-ms-win-core-synch-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-synch-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_SYNCH_L1_2_0.DLL" DiskId="1" Guid="B459861D-D346-44DC-9CEA-BE69C93BE4DB">
+                    <File Id="API_MS_WIN_CORE_SYNCH_L1_2_0.DLL" Name="api-ms-win-core-synch-l1-2-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-synch-l1-2-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_SYSINFO_L1_1_0.DLL" DiskId="1" Guid="DDA7F2AB-C7BD-4C60-9392-39E80850323A">
+                    <File Id="API_MS_WIN_CORE_SYSINFO_L1_1_0.DLL" Name="api-ms-win-core-sysinfo-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-sysinfo-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_TIMEZONE_L1_1_0.DLL" DiskId="1" Guid="E7DB227D-6B6F-4F07-B81D-7CE0ADEDA76B">
+                    <File Id="API_MS_WIN_CORE_TIMEZONE_L1_1_0.DLL" Name="api-ms-win-core-timezone-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-timezone-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CORE_UTIL_L1_1_0.DLL" DiskId="1" Guid="81AF5114-6D16-4A40-9A93-CD3F0D435DEC">
+                    <File Id="API_MS_WIN_CORE_UTIL_L1_1_0.DLL" Name="api-ms-win-core-util-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-core-util-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_CONIO_L1_1_0.DLL" DiskId="1" Guid="B952CB58-58DE-4986-BEE0-80013F35BF1C">
+                    <File Id="API_MS_WIN_CRT_CONIO_L1_1_0.DLL" Name="api-ms-win-crt-conio-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-conio-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_CONVERT_L1_1_0.DLL" DiskId="1" Guid="372EF658-A78D-4253-AF87-629C2682C8FB">
+                    <File Id="API_MS_WIN_CRT_CONVERT_L1_1_0.DLL" Name="api-ms-win-crt-convert-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-convert-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_ENVIRONMENT_L1_1_0.DLL" DiskId="1" Guid="61409664-5271-4C85-B0D4-8E1B9F4FA362">
+                    <File Id="API_MS_WIN_CRT_ENVIRONMENT_L1_1_0.DLL" Name="api-ms-win-crt-environment-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-environment-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_FILESYSTEM_L1_1_0.DLL" DiskId="1" Guid="1FC5DC6E-34B5-4D93-B130-87DA0D5670CC">
+                    <File Id="API_MS_WIN_CRT_FILESYSTEM_L1_1_0.DLL" Name="api-ms-win-crt-filesystem-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-filesystem-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_HEAP_L1_1_0.DLL" DiskId="1" Guid="1D6D6C8F-494E-446D-9B6B-6E62F1ECEDCA">
+                    <File Id="API_MS_WIN_CRT_HEAP_L1_1_0.DLL" Name="api-ms-win-crt-heap-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-heap-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_LOCALE_L1_1_0.DLL" DiskId="1" Guid="9F5ADF1B-C1A1-4094-9DBA-241DC78CE12D">
+                    <File Id="API_MS_WIN_CRT_LOCALE_L1_1_0.DLL" Name="api-ms-win-crt-locale-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-locale-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_MATH_L1_1_0.DLL" DiskId="1" Guid="C9FED1DA-A090-4284-9634-7AEA5884194F">
+                    <File Id="API_MS_WIN_CRT_MATH_L1_1_0.DLL" Name="api-ms-win-crt-math-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-math-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_MULTIBYTE_L1_1_0.DLL" DiskId="1" Guid="48F113BE-B3D2-427F-82DD-01D4BF124412">
+                    <File Id="API_MS_WIN_CRT_MULTIBYTE_L1_1_0.DLL" Name="api-ms-win-crt-multibyte-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-multibyte-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_PRIVATE_L1_1_0.DLL" DiskId="1" Guid="96459513-2DA1-4849-B624-3C8ADB8E4279">
+                    <File Id="API_MS_WIN_CRT_PRIVATE_L1_1_0.DLL" Name="api-ms-win-crt-private-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-private-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_PROCESS_L1_1_0.DLL" DiskId="1" Guid="14501A31-D898-45AE-AA94-3333E0A83E7C">
+                    <File Id="API_MS_WIN_CRT_PROCESS_L1_1_0.DLL" Name="api-ms-win-crt-process-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-process-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_RUNTIME_L1_1_0.DLL" DiskId="1" Guid="34F1B19F-8F9D-409F-9021-C315BF7A6CC4">
+                    <File Id="API_MS_WIN_CRT_RUNTIME_L1_1_0.DLL" Name="api-ms-win-crt-runtime-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-runtime-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_STDIO_L1_1_0.DLL" DiskId="1" Guid="EBFF6D64-0DEF-430F-8334-AB952013AD5B">
+                    <File Id="API_MS_WIN_CRT_STDIO_L1_1_0.DLL" Name="api-ms-win-crt-stdio-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-stdio-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_STRING_L1_1_0.DLL" DiskId="1" Guid="A745D4FC-536D-4A2B-9B99-8CA69BD5AFDE">
+                    <File Id="API_MS_WIN_CRT_STRING_L1_1_0.DLL" Name="api-ms-win-crt-string-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-string-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_TIME_L1_1_0.DLL" DiskId="1" Guid="E43C7191-8829-40D6-924C-7C05AD42901D">
+                    <File Id="API_MS_WIN_CRT_TIME_L1_1_0.DLL" Name="api-ms-win-crt-time-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-time-l1-1-0.dll" />
+                </Component>
+                <Component Id="API_MS_WIN_CRT_UTILITY_L1_1_0.DLL" DiskId="1" Guid="5BA576E1-1E28-41FD-80E6-5064AAF78B7E">
+                    <File Id="API_MS_WIN_CRT_UTILITY_L1_1_0.DLL" Name="api-ms-win-crt-utility-l1-1-0.dll" Source="QtIFW\packages\com.vendor.root\data\api-ms-win-crt-utility-l1-1-0.dll" />
+                </Component>
+                <Component Id="APPLICATION.INI" DiskId="1" Guid="EFB08143-A2B1-46D2-9015-957E59656D25">
+                    <File Id="APPLICATION.INI" Name="application.ini" Source="QtIFW\packages\com.vendor.root\data\application.ini" />
+                </Component>
+                <Component Id="CHROME.MANIFEST" DiskId="1" Guid="8A8DBB81-6F3D-41FE-A264-DEE1E3A35F0F">
+                    <File Id="CHROME.MANIFEST" Name="chrome.manifest" Source="QtIFW\packages\com.vendor.root\data\chrome.manifest" />
+                </Component>
+                <Component Id="CONCRT140.DLL" DiskId="1" Guid="6B0F7027-A414-414C-A76D-DF2BB058CAE2">
+                    <File Id="CONCRT140.DLL" Name="concrt140.dll" Source="QtIFW\packages\com.vendor.root\data\concrt140.dll" />
+                </Component>
+                <Component Id="D3DCOMPILER_43.DLL" DiskId="1" Guid="525B5D71-8F7D-4FCA-B0E5-E8F02A57E7A0">
+                    <File Id="D3DCOMPILER_43.DLL" Name="D3DCompiler_43.dll" Source="QtIFW\packages\com.vendor.root\data\D3DCompiler_43.dll" />
+                </Component>
+                <Component Id="D3DCOMPILER_47.DLL" DiskId="1" Guid="D97C32FF-C22B-48BE-9D2B-ABF85A193D64">
+                    <File Id="D3DCOMPILER_47.DLL" Name="d3dcompiler_47.dll" Source="QtIFW\packages\com.vendor.root\data\d3dcompiler_47.dll" />
+                </Component>
+                <Component Id="DEPENDENTLIBS.LIST" DiskId="1" Guid="7F1F1E8E-9E12-4158-B911-0387F56A2282">
+                    <File Id="DEPENDENTLIBS.LIST" Name="dependentlibs.list" Source="QtIFW\packages\com.vendor.root\data\dependentlibs.list" />
+                </Component>
+                <Component Id="FREEBL3.CHK" DiskId="1" Guid="D46D3925-0AC0-4DCC-B7B5-0F188F09BD18">
+                    <File Id="FREEBL3.CHK" Name="freebl3.chk" Source="QtIFW\packages\com.vendor.root\data\freebl3.chk" />
+                </Component>
+                <Component Id="FREEBL3.DLL" DiskId="1" Guid="12D817B3-575F-40C8-8B09-4EC759802499">
+                    <File Id="FREEBL3.DLL" Name="freebl3.dll" Source="QtIFW\packages\com.vendor.root\data\freebl3.dll" />
+                </Component>
+                <Component Id="LGPLLIBS.DLL" DiskId="1" Guid="F6E65F40-9F3F-4AB4-AE36-6BB81D553FB5">
+                    <File Id="LGPLLIBS.DLL" Name="lgpllibs.dll" Source="QtIFW\packages\com.vendor.root\data\lgpllibs.dll" />
+                </Component>
+                <Component Id="LIBEGL.DLL" DiskId="1" Guid="70CAF7A4-676F-405F-9C47-6C329644D984">
+                    <File Id="LIBEGL.DLL" Name="libEGL.dll" Source="QtIFW\packages\com.vendor.root\data\libEGL.dll" />
+                </Component>
+                <Component Id="LIBGLESV2.DLL" DiskId="1" Guid="A0127BB3-AED4-4900-95F0-3CBB923E04F5">
+                    <File Id="LIBGLESV2.DLL" Name="libGLESv2.dll" Source="QtIFW\packages\com.vendor.root\data\libGLESv2.dll" />
+                </Component>
+                <Component Id="MOZAVCODEC.DLL" DiskId="1" Guid="A3425BE5-A21B-4D06-A2CF-E60F41EB4DCF">
+                    <File Id="MOZAVCODEC.DLL" Name="mozavcodec.dll" Source="QtIFW\packages\com.vendor.root\data\mozavcodec.dll" />
+                </Component>
+                <Component Id="MOZAVUTIL.DLL" DiskId="1" Guid="2A827CE7-C1CA-4F46-BC55-66966C16D7EF">
+                    <File Id="MOZAVUTIL.DLL" Name="mozavutil.dll" Source="QtIFW\packages\com.vendor.root\data\mozavutil.dll" />
+                </Component>
+                <Component Id="MOZGLUE.DLL" DiskId="1" Guid="EB23D969-D25B-4688-A850-5A1989FA3A29">
+                    <File Id="MOZGLUE.DLL" Name="mozglue.dll" Source="QtIFW\packages\com.vendor.root\data\mozglue.dll" />
+                </Component>
+                <Component Id="MSVCP140.DLL" DiskId="1" Guid="0884C254-56E0-4B9F-AA80-A60265551B24">
+                    <File Id="MSVCP140.DLL" Name="msvcp140.dll" Source="QtIFW\packages\com.vendor.root\data\msvcp140.dll" />
+                </Component>
+                <Component Id="MYPAL.EXE" DiskId="1" Guid="D934DFB6-7264-4EE0-AEB0-33A1B8F20C23">
+                    <File Id="MYPAL.EXE" Name="mypal.exe" Source="QtIFW\packages\com.vendor.root\data\mypal.exe" />
+                </Component>
+                <Component Id="MYPAL.VISUALELEMENTSMANIFEST.XML" DiskId="1" Guid="FCE8D2EB-D17D-4A1B-86B3-03ED5B8DE7E2">
+                    <File Id="MYPAL.VISUALELEMENTSMANIFEST.XML" Name="mypal.VisualElementsManifest.xml" Source="QtIFW\packages\com.vendor.root\data\mypal.VisualElementsManifest.xml" />
+                </Component>
+                <Component Id="NSS3.DLL" DiskId="1" Guid="4C52E9DA-DD23-4F93-9F42-93809EDE738F">
+                    <File Id="NSS3.DLL" Name="nss3.dll" Source="QtIFW\packages\com.vendor.root\data\nss3.dll" />
+                </Component>
+                <Component Id="NSSCKBI.DLL" DiskId="1" Guid="BDAFA25A-FFCC-4DAA-9511-F9864B091600">
+                    <File Id="NSSCKBI.DLL" Name="nssckbi.dll" Source="QtIFW\packages\com.vendor.root\data\nssckbi.dll" />
+                </Component>
+                <Component Id="OMNI.JA" DiskId="1" Guid="A6BFC74F-22C1-4C80-B4CE-9C444B2BF876">
+                    <File Id="OMNI.JA" Name="omni.ja" Source="QtIFW\packages\com.vendor.root\data\omni.ja" />
+                </Component>
+                <Component Id="PLATFORM.INI" DiskId="1" Guid="1F42E7FA-0A86-47F1-818F-FD934567A465">
+                    <File Id="PLATFORM.INI" Name="platform.ini" Source="QtIFW\packages\com.vendor.root\data\platform.ini" />
+                </Component>
+                <Component Id="PLUGIN_CONTAINER.EXE" DiskId="1" Guid="3E913EDA-9A0B-4554-B620-A8B4F283DDAB">
+                    <File Id="PLUGIN_CONTAINER.EXE" Name="plugin-container.exe" Source="QtIFW\packages\com.vendor.root\data\plugin-container.exe" />
+                </Component>
+                <Component Id="PLUGIN_HANG_UI.EXE" DiskId="1" Guid="0D0BA2F5-DCCA-4749-A63D-DAEDFA33BFE3">
+                    <File Id="PLUGIN_HANG_UI.EXE" Name="plugin-hang-ui.exe" Source="QtIFW\packages\com.vendor.root\data\plugin-hang-ui.exe" />
+                </Component>
+                <Component Id="PRECOMPLETE" DiskId="1" Guid="D7A624C0-8975-4424-B438-74BC7CB27A81">
+                    <File Id="PRECOMPLETE" Name="precomplete" Source="QtIFW\packages\com.vendor.root\data\precomplete" />
+                </Component>
+                <Component Id="QIPCAP64.DLL" DiskId="1" Guid="DCEB1145-72DA-483D-AC39-B823D4318416">
+                    <File Id="QIPCAP64.DLL" Name="qipcap64.dll" Source="QtIFW\packages\com.vendor.root\data\qipcap64.dll" />
+                </Component>
+                <Component Id="REMOVED_FILES" DiskId="1" Guid="2AD26647-CD2C-445B-AC87-11944E10C778">
+                    <File Id="REMOVED_FILES" Name="removed-files" Source="QtIFW\packages\com.vendor.root\data\removed-files" />
+                </Component>
+                <Component Id="SOFTOKN3.CHK" DiskId="1" Guid="C516D28C-66C0-45A4-9B19-59B15B4F8625">
+                    <File Id="SOFTOKN3.CHK" Name="softokn3.chk" Source="QtIFW\packages\com.vendor.root\data\softokn3.chk" />
+                </Component>
+                <Component Id="SOFTOKN3.DLL" DiskId="1" Guid="971F746E-C62F-4832-B7E9-7A75D0C6F5B1">
+                    <File Id="SOFTOKN3.DLL" Name="softokn3.dll" Source="QtIFW\packages\com.vendor.root\data\softokn3.dll" />
+                </Component>
+                <Component Id="UCRTBASE.DLL" DiskId="1" Guid="95D9A110-FAB7-403B-B6D9-675BC333519C">
+                    <File Id="UCRTBASE.DLL" Name="ucrtbase.dll" Source="QtIFW\packages\com.vendor.root\data\ucrtbase.dll" />
+                </Component>
+                <Component Id="VCRUNTIME140.DLL" DiskId="1" Guid="A6C2D64D-E8D2-48A0-9E74-A14AA1A6FF51">
+                    <File Id="VCRUNTIME140.DLL" Name="vcruntime140.dll" Source="QtIFW\packages\com.vendor.root\data\vcruntime140.dll" />
+                </Component>
+                <Component Id="XUL.DLL" DiskId="1" Guid="ED32A4CD-1167-44E8-B553-DE960AC33106">
+                    <File Id="XUL.DLL" Name="xul.dll" Source="QtIFW\packages\com.vendor.root\data\xul.dll" />
+                </Component>
+                <Directory Id="BROWSER" Name="browser">
+                    <Component Id="BLOCKLIST.XML" DiskId="1" Guid="63FC28AF-C5BE-4A0F-89E5-8B5A375F5517">
+                        <File Id="BLOCKLIST.XML" Name="blocklist.xml" Source="QtIFW\packages\com.vendor.root\data\browser\blocklist.xml" />
+                    </Component>
+                    <Component Id="CHROME.MANIFEST_1" DiskId="1" Guid="21192A96-2933-4B73-9191-EFFBA5C5E056">
+                        <File Id="CHROME.MANIFEST_1" Name="chrome.manifest" Source="QtIFW\packages\com.vendor.root\data\browser\chrome.manifest" />
+                    </Component>
+                    <Component Id="OMNI.JA_1" DiskId="1" Guid="D6C2B8AE-E8C4-4A1F-8E2E-B7DEB222B25A">
+                        <File Id="OMNI.JA_1" Name="omni.ja" Source="QtIFW\packages\com.vendor.root\data\browser\omni.ja" />
+                    </Component>
+                    <Directory Id="VISUALELEMENTS" Name="VisualElements">
+                        <Component Id="VISUALELEMENTS_150.PNG" DiskId="1" Guid="ECDABAE5-2823-4C9B-A652-CD9D18D244D0">
+                            <File Id="VISUALELEMENTS_150.PNG" Name="VisualElements_150.png" Source="QtIFW\packages\com.vendor.root\data\browser\VisualElements\VisualElements_150.png" />
+                        </Component>
+                        <Component Id="VISUALELEMENTS_70.PNG" DiskId="1" Guid="9DDC7603-4A75-4126-97F1-35278BD8889F">
+                            <File Id="VISUALELEMENTS_70.PNG" Name="VisualElements_70.png" Source="QtIFW\packages\com.vendor.root\data\browser\VisualElements\VisualElements_70.png" />
+                        </Component>
+                    </Directory>
+                </Directory>
+                <Directory Id="DEFAULTS" Name="defaults">
+                    <Directory Id="PREF" Name="pref">
+                        <Component Id="CHANNEL_PREFS.JS" DiskId="1" Guid="DF23FC65-60D6-4619-8297-89D197CE61B1">
+                            <File Id="CHANNEL_PREFS.JS" Name="channel-prefs.js" Source="QtIFW\packages\com.vendor.root\data\defaults\pref\channel-prefs.js" />
+                        </Component>
+                    </Directory>
+                </Directory>
+                <Directory Id="FONTS" Name="fonts">
+                    <Component Id="TWEMOJIMOZILLA.TTF" DiskId="1" Guid="BC793767-480F-42DF-A7A0-6B2E162EA1C2">
+                        <File Id="TWEMOJIMOZILLA.TTF" Name="TwemojiMozilla.ttf" Source="QtIFW\packages\com.vendor.root\data\fonts\TwemojiMozilla.ttf" />
+                    </Component>
+                </Directory>
+                <Directory Id="UNINSTALL" Name="uninstall">
+                    <Component Id="HELPER.EXE" DiskId="1" Guid="FE7EFEA0-1134-4E36-9204-DB400AF1C46D">
+                        <File Id="HELPER.EXE" Name="helper.exe" Source="QtIFW\packages\com.vendor.root\data\uninstall\helper.exe" />
+                    </Component>
+                </Directory>
+                <Component Id="LICENSE" DiskId="1" Guid="808A7BE3-8A8B-48AA-B677-5E649FC4E9EF">
+                    <File Id="LICENSE" Name="LICENSE" Source="LICENSE" />
+                </Component>
+            </Directory>
+        </Directory>
+        <UIRef Id="WixUI_FeatureTree" />
+        <!-- Define the UI with a custom license agreement -->
+        <UI>
+            <!-- Reference to License Agreement Dialog -->
+            <DialogRef Id="LicenseAgreementDlg" />
+            <!-- Sequence for showing the license agreement dialog -->
+            <InstallUISequence>
+                <Show Dialog="LicenseAgreementDlg" After="WelcomeDlg" />
+            </InstallUISequence>
+        </UI>
+        <!-- Property for License File Path -->
+        <Property Id="LicenseFile" Value="[#LICENSE]" />
+        <Property Id="INSTALLDIR" Value="C:\Program Files\Mypal\" />
+        <Feature Id="" Level="">
+            <ComponentRef Id="StartMenuShortcuts" />
+            <ComponentRef Id="DesktopShortcut" />
+            <ComponentRef Id="API_MS_WIN_CORE_CONSOLE_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_DATETIME_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_DEBUG_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_ERRORHANDLING_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_FILE_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_FILE_L1_2_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_FILE_L2_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_HANDLE_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_HEAP_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_INTERLOCKED_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_LIBRARYLOADER_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_LOCALIZATION_L1_2_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_MEMORY_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_NAMEDPIPE_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_PROCESSENVIRONMENT_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_PROCESSTHREADS_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_PROCESSTHREADS_L1_1_1.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_PROFILE_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_RTLSUPPORT_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_STRING_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_SYNCH_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_SYNCH_L1_2_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_SYSINFO_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_TIMEZONE_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CORE_UTIL_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_CONIO_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_CONVERT_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_ENVIRONMENT_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_FILESYSTEM_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_HEAP_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_LOCALE_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_MATH_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_MULTIBYTE_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_PRIVATE_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_PROCESS_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_RUNTIME_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_STDIO_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_STRING_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_TIME_L1_1_0.DLL" />
+            <ComponentRef Id="API_MS_WIN_CRT_UTILITY_L1_1_0.DLL" />
+            <ComponentRef Id="APPLICATION.INI" />
+            <ComponentRef Id="CHROME.MANIFEST" />
+            <ComponentRef Id="CONCRT140.DLL" />
+            <ComponentRef Id="D3DCOMPILER_43.DLL" />
+            <ComponentRef Id="D3DCOMPILER_47.DLL" />
+            <ComponentRef Id="DEPENDENTLIBS.LIST" />
+            <ComponentRef Id="FREEBL3.CHK" />
+            <ComponentRef Id="FREEBL3.DLL" />
+            <ComponentRef Id="LGPLLIBS.DLL" />
+            <ComponentRef Id="LIBEGL.DLL" />
+            <ComponentRef Id="LIBGLESV2.DLL" />
+            <ComponentRef Id="MOZAVCODEC.DLL" />
+            <ComponentRef Id="MOZAVUTIL.DLL" />
+            <ComponentRef Id="MOZGLUE.DLL" />
+            <ComponentRef Id="MSVCP140.DLL" />
+            <ComponentRef Id="MYPAL.EXE" />
+            <ComponentRef Id="MYPAL.VISUALELEMENTSMANIFEST.XML" />
+            <ComponentRef Id="NSS3.DLL" />
+            <ComponentRef Id="NSSCKBI.DLL" />
+            <ComponentRef Id="OMNI.JA" />
+            <ComponentRef Id="PLATFORM.INI" />
+            <ComponentRef Id="PLUGIN_CONTAINER.EXE" />
+            <ComponentRef Id="PLUGIN_HANG_UI.EXE" />
+            <ComponentRef Id="PRECOMPLETE" />
+            <ComponentRef Id="QIPCAP64.DLL" />
+            <ComponentRef Id="REMOVED_FILES" />
+            <ComponentRef Id="SOFTOKN3.CHK" />
+            <ComponentRef Id="SOFTOKN3.DLL" />
+            <ComponentRef Id="UCRTBASE.DLL" />
+            <ComponentRef Id="VCRUNTIME140.DLL" />
+            <ComponentRef Id="XUL.DLL" />
+            <ComponentRef Id="BLOCKLIST.XML" />
+            <ComponentRef Id="CHROME.MANIFEST_1" />
+            <ComponentRef Id="OMNI.JA_1" />
+            <ComponentRef Id="VISUALELEMENTS_150.PNG" />
+            <ComponentRef Id="VISUALELEMENTS_70.PNG" />
+            <ComponentRef Id="CHANNEL_PREFS.JS" />
+            <ComponentRef Id="TWEMOJIMOZILLA.TTF" />
+            <ComponentRef Id="HELPER.EXE" />
+        </Feature>
+    </Product>
+</Wix>
