@@ -1,7 +1,7 @@
 # Mypal
 
 <a href="https://www.mypal-browser.org/">
-  <img title="Mypal Browser" src="https://raw.githubusercontent.com/LouieTian0209/mypal-windows/refs/heads/main/app_icon.ico" width="96" alt="Mypal" />
+  <img title="Mypal Browser" src="https://raw.githubusercontent.com/LouieTian0209/mypal-windows/refs/heads/main/app_icon.ico" width="48" alt="Mypal" />
 </a>
 <br>
 
